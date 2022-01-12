@@ -19,10 +19,10 @@ class MyCard extends StatelessWidget {
               children: [
                 CircleAvatar(radius: 50, backgroundColor: Color.fromRGBO(
                     161, 255, 255, 0.25),),
-                Text('GSR Sistemas', style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),),
-                Text('Out Sourcing', style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),),
-                Card(child: Text('Fone', style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),),),
-                Card(child: Text('Email', style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),),),
+                Text('GSR Sistemas', style: TextStyle(fontSize: 45, color: Colors.black, fontWeight: FontWeight.bold, fontFamily: 'DancingS'),),
+                Text('OUT SOURCING', style: TextStyle(fontSize: 25, color: Colors.black, fontWeight: FontWeight.bold, fontFamily: 'UbuntuM', letterSpacing: 2.5),),
+                Card(child: Text('Fone', style: TextStyle(fontSize: 40, color: Colors.black, fontWeight: FontWeight.bold),),),
+                Card(child: Text('Email', style: TextStyle(fontSize: 40, color: Colors.black, fontWeight: FontWeight.bold),),),
               ],
             ),
           )),
