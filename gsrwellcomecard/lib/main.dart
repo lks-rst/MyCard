@@ -5,7 +5,9 @@ void main() {
     MyCard()
   );
 }
-
+//TODO: Add a "about us section" via button or via menu;
+//TODO: Add the connections to the email and to the phone/whatsaap;
+//TODO: Finalize the layout using palette.css (in downloads folder);
 class MyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,8 +23,59 @@ class MyCard extends StatelessWidget {
                     161, 255, 255, 0.25),),
                 Text('GSR Sistemas', style: TextStyle(fontSize: 45, color: Colors.black, fontWeight: FontWeight.bold, fontFamily: 'DancingS'),),
                 Text('OUT SOURCING', style: TextStyle(fontSize: 25, color: Colors.black, fontWeight: FontWeight.bold, fontFamily: 'UbuntuM', letterSpacing: 2.5),),
-                Card(child: Text('Fone', style: TextStyle(fontSize: 40, color: Colors.black, fontWeight: FontWeight.bold),),),
-                Card(child: Text('Email', style: TextStyle(fontSize: 40, color: Colors.black, fontWeight: FontWeight.bold),),),
+                SizedBox(height: 5, ),
+                SizedBox(height: 5, child: Divider(color: Colors.black, thickness: .75,), width: 150,),
+                SizedBox(height: 5, child: Divider(color: Colors.black, thickness: .75,), width: 300,),
+                SizedBox(height: 5, child: Divider(color: Colors.black, thickness: .75,), width: 150,),
+                SizedBox(height: 5, ),
+                Card(
+                  color: Colors.cyan,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: ListTile(
+                      leading: Icon(Icons.phone, size: 30, color: Color.fromRGBO(
+                            255, 255, 255, 1.0),),
+                      title: Text('+55 054 9 9156-6150', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),),
+                    ),
+                  ),),
+                Card(
+                  color: Colors.cyan,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: ListTile(
+                        leading: Icon(Icons.email, size: 30, color: Color.fromRGBO(
+                            255, 255, 255, 1.0),),
+                        title: Text('lks.rst@gmail.com', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),),
+                    ),
+                  ),),
+            /*
+            Card(
+                  color: Colors.cyan,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                    children: [
+                      Icon(Icons.phone, size: 30, color: Color.fromRGBO(
+                          255, 255, 255, 1.0),),
+                      SizedBox(width: 15,),
+                      Text('+55 054 9 9156-6150', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),),
+                    ],
+                ),
+                  ),),
+                Card(
+                  color: Colors.cyan,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      children: [
+                        Icon(Icons.email, size: 30, color: Color.fromRGBO(
+                            255, 255, 255, 1.0),),
+                        SizedBox(width: 15,),
+                        Text('lks.rst@gmail.com', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),),
+                      ],
+                    ),
+                  ),),
+                */
               ],
             ),
           )),
