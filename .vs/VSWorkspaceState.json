@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\gsrwellcomecard"
+    "\\gsrwellcomecard",
+    "\\gsrwellcomecard\\images",
+    "\\gsrwellcomecard\\lib"
   ],
+  "SelectedNode": "\\gsrwellcomecard\\lib\\main.dart",
   "PreviewInSolutionExplorer": false
 }

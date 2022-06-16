@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
 void main() => runApp(BeforeCard());
 
@@ -19,9 +22,50 @@ class BeforeCard extends StatelessWidget {
 }
 
 //TODO: Add the connections to the email and to the phone/whatsapp;
+//TODO: Add a many soscial media connection (facebook, twitter, instagram, linkedin)
 //TODO: Add internationalization;
 //TODO: Find the way to create a file/class with constatns to use;
 class MyCard extends StatelessWidget {
+  Future<void> main() async {
+    const phoneNumber = '15551234567';
+    const text = 'I\'m interested in in your "Ferrari" car for sale!';
+    const withPhoneNumberAndText = WhatsAppUnilink(
+      phoneNumber: phoneNumber,
+      text: text,
+    );
+    const withPhoneNumber = WhatsAppUnilink(phoneNumber: phoneNumber);
+    const withText = WhatsAppUnilink(text: text);
+
+    final html =
+        '''<html><head><title>whatsapp unilink example</title></head><body><a href="$withPhoneNumberAndText">With phone number and text.</a><br><a href="$withPhoneNumber">With phone number.</a><br><a href="$withText">With text</a></body></html>''';
+
+    print('Starting server...');
+    final server = await HttpServer.bind(InternetAddress.loopbackIPv4, 3000);
+    print('Server available on http://localhost:3000');
+
+    await for (final request in server) {
+      request.response
+        ..statusCode = HttpStatus.ok
+        ..headers.contentType = ContentType.html
+        ..write(html);
+      await request.response.close();
+    }
+  }
+
+  /*
+// ...somewhere in your Flutter app...
+  launchWhatsApp() async {
+    final link = WhatsAppUnilink(
+      phoneNumber: '+001-(555)1234567',
+      text: "Hey! I'm inquiring about the apartment listing",
+    );
+    // Convert the WhatsAppUnilink instance to a string.
+    // Use either Dart's string interpolation or the toString() method.
+    // The "launch" method is part of "url_launcher".
+    await launch('$link');
+  }
+*/
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,24 +77,37 @@ class MyCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircleAvatar(
-              radius: 50,
-              backgroundColor: Color.fromRGBO(0, 151, 167, .1),
+              radius: 60,
+              //backgroundColor: Color.fromRGBO(0, 151, 167, .1),
+              backgroundImage: AssetImage(
+                //'images/gsr_2.png',
+                'images/Simbolo.png',
+                //'images/Logo-GSR.png',
+              ),
             ),
             Text(
-              'GSR Sistemas',
+              'GSR',
               style: TextStyle(
-                  fontSize: 45,
+                  fontSize: 65,
                   color: Color.fromRGBO(33, 33, 33, 1.0),
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'DancingS'),
+                  fontFamily: 'Mundial'),
+            ),
+            Text(
+              'SISTEMAS',
+              style: TextStyle(
+                  fontSize: 25,
+                  color: Color.fromRGBO(33, 33, 33, 1.0),
+                  fontWeight: FontWeight.w100,
+                  fontFamily: 'Arkibal'),
             ),
             Text(
               'OUT SOURCING',
               style: TextStyle(
                   fontSize: 25,
                   color: Color.fromRGBO(33, 33, 33, 1.0),
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'UbuntuM',
+                  fontWeight: FontWeight.normal,
+                  fontFamily: 'Arkibal',
                   letterSpacing: 2.5),
             ),
             SizedBox(
@@ -85,7 +142,7 @@ class MyCard extends StatelessWidget {
               height: 5,
             ),
             FlatButton(
-              onPressed: null,
+              onPressed: main,
               child: Card(
                 //00BCD4
                 color: Color.fromRGBO(0, 188, 212, 1.0),
@@ -199,20 +256,26 @@ class MyCard extends StatelessWidget {
   }
 
 // The easiest way for creating RFlutter Alert
+
+//Somos uma empresa especializada em gerencia de projetos, e desenvolvimento de
+// software que tem como principal objetivo tornar sua tarefa de desenvolvimento
+// e gestão de equipa mais simples.
+//Possuímos profissionais altamente qualificados, prontos para assumir as
+// responsábiliades desde a escrita de código para aplicações até gestão de
+// equipes de desenvolvimento e multifuncionais.
+//Se sua necessidade é uma equipe de desenvolvedores para construção de um
+// sistema interno, uma equipe para analise de requisitos e viabilidade
+// viabilidade de sistema, ou um gestor de tecnologia de maneira geral, entre
+// em contato conosco.
   _onBasicAlertPressed(context) {
     Alert(
       context: context,
       title: "SOBRE NÓS",
-      desc: "Somos uma empresa especializada em gerencia de projetos, e"
-          " desenvolvimento de software que tem como principal objetivo tornar "
-          "sua tarefa de desenvolvimento e gestão de equipa mais simples. "
-          "Possuímos profissionais altamente qualificados, prontos para assumir "
-          "as responsábiliades desde a escrita de código para aplicações até "
-          "gestão de equipes de desenvolvimento e multifuncionais."
-          "Se sua necessidade é uma equipe de desenvolvedores para construção de "
-          "um sistema interno, uma equipe para analise de requisitos e viabilidade"
-          " viabilidade de sistema, ou um gestor de tecnologia de maneira geral, "
-          "entre em contato conosco.",
+      desc: "A GSR Sistemas têm experiência de mais de 10 anos no mercado em "
+          "análise e desenvolvimento de sistemas focada na atuação em outras "
+          "empresas, como outsourcing."
+          "Sua principal preocupação é atender a demanda de seus clientes com "
+          "profissionalismo, inovação e confiabilidade de seus serviços.",
     ).show();
   }
 }
